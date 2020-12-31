@@ -1,6 +1,5 @@
-package com.example.demo.controler;
+package com.example.demo.Controller;
 
 public class UserControler {
     public String name;
-
 }
