@@ -4,6 +4,8 @@ public class ac_pass {
     private String pass_usern;
     private String pass_pass;
 
+    public ac_pass(){}
+
     public ac_pass(String pass_usern) {
         this.pass_usern = pass_usern;
     }
