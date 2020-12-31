@@ -48,6 +48,11 @@
             <artifactId>jstl</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- jsp页面使用jstl标签 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
