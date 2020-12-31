@@ -1,9 +1,8 @@
-package com.example.demo.Pojo;
+package org.nsig.ocp.Pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;

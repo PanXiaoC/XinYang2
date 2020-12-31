@@ -1,4 +1,4 @@
-package com.example.demo.Dao;
+package org.nsig.ocp.Dao;
 
 public interface UserDao {
     /*

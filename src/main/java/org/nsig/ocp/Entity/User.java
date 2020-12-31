@@ -1,4 +1,4 @@
-package com.example.demo.Entity;
+package org.nsig.ocp.Entity;
 
 public class User {
     private int cd;

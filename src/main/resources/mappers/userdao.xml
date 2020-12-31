@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.Dao.userdao" >
-    <resultMap id="BaseResultMap" type="com.example.demo.Pojo.user" >
+    <resultMap id="BaseResultMap" type="org.nsig.ocp.Pojo.user" >
         <id column="userid" property="userid" jdbcType="INTEGER" />
         <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="userpass" property="userpass" jdbcType="VARCHAR" />
         <result column="sex" property="sex" jdbcType="VARCHAR" />
     </resultMap>
-    <select id="login" resultMap="BaseResultMap" parameterType="com.example.demo.Pojo.user" >
+    <select id="login" resultMap="BaseResultMap" parameterType="org.nsig.ocp.Pojo.user" >
         select * from user where username = #{username} and userpass=#{userpass}
     </select>
 </mapper>
