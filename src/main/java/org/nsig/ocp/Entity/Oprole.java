@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Component
 @ConfigurationProperties(prefix = "oprole")
 public class Oprole implements Serializable {
-    private static final long SerVersionUID = 1L;
+
     private String role_name;
     private String role_des;
     private String role_con;

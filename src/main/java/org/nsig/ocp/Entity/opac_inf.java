@@ -15,7 +15,7 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = "opacrole")
 
 public class opac_inf implements Serializable {
-    private static final long SerVersionUID = 1L;
+
     private Integer id;
     private String inf_usern;
     private String inf_realn;

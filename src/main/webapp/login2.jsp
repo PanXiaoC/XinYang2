@@ -18,15 +18,20 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <!--/webfonts-->
+    <style>
+        span{
+            color: yellow;
+        }
+    </style>
 </head>
 <body>
 <!--start-main-->
 <h1>OCP全渠道数字平台 | 登录</h1>
 <div class="login-box">
-    <form action="" method="post" id="login_form" οnsubmit="return checkForm()">
-        <input type="text" class="text" value="" id="username" neme="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" placeholder="请输入用户名" >
-        <input type="password" value="" id="input_pwd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" placeholder="请输入密码">
-        <input type="hidden" name="pwd" id="md5_pwd" value='' />
+    <form action="${pageContext.request.contextPath}/login" method="post" id="login_form" οnsubmit="return checkForm()">
+        <input type="text" id="user" name="pass_usern" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" placeholder="请输入用户名" ><span >${loginerror}</span>
+        <input type="password" id="pass" name = "pass_pass" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" placeholder="请输入密码">
+        <input type="hidden" name="pass_pass" id="md5_pwd" value='' />
         <div class="check-box">
             <div class="slideThree">
                 <input type="checkbox" value="None" id="slideThree" name="check" />
