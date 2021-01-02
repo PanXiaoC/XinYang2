@@ -37,30 +37,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<span id="header">
-    		<label title="点击修改密码">${user.username},先生/女士</label>,
+    		<label title="点击修改密码">${user.pass_usern},先生/女士</label>,
     			<a href="/ocp/logout">【退出】</a>
     	</span>
     <hr/>	
     <table>
     		<thead>
-    			<tr><th>用户编号</th><th>用户姓名</th><th>用户密码</th><th>用户性别</th><th>操作</th></tr>
+    			<tr><th>用户编号</th><th>用户名</th><th>描述</th><th>状态</th><th>操作</th></tr>
     		</thead>
     		<tbody>
     		<c:forEach items="${user2}" var="user" varStatus="list">
     			<tr>
-	    			<th>${user.userid}</th>
-	    			<th>${user.username}</th>
-	    			<th id="${user.userid}">${user.userpass}</th>
-	    			<th>${user.sex}</th>
+	    			<th>${user.role_id}</th>
+	    			<th>${user.role_name}</th>
+	    			<th id="${user.role_id}">${user.role_con}</th>
+	    			<th>${user.role_des}</th>
 	    			<th>
-	    				<button onclick="modify(${user.userid},this)">修改密码</button>&nbsp;&nbsp;&nbsp;&nbsp;
-	    				<button onclick="removeUserById(${user.userid},this)">删除</button>
+	    				<button onclick="modify(${user.role_id},this)">修改密码</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	    				<button onclick="removeUserById(${user.role_id},this)">删除</button>
 	    			</th>
     			</tr>
     		</c:forEach>
     		</tbody>
     	</table>
-    		<center>
+		<center>
     		当前第${pageInfo.pageNum}页/总共${pageInfo.pages}页,
     		<a href="user/getAllUsers?pageNum=${pageInfo.pageNum-1}&maxPage=${pageInfo.pages}">上一页</a>  
     		<a href="user/getAllUsers?pageNum=${pageInfo.pageNum+1}&maxPage=${pageInfo.pages}">下一页</a>  

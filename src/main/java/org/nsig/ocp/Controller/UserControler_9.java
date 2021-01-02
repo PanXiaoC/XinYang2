@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -23,24 +24,26 @@ public class UserControler_9 {
     @Autowired
     private Oprole oprole;
 
-
     @RequestMapping("/index")
     public String test() {
         return "login2";
     }
     @RequestMapping("/login")
-    public String login(ac_pass acPass, Map map)
+    public String login(ac_pass acPass, Map map, HttpSession session)
     {
         ac_pass acpass1 = new ac_pass();
         acpass1 = opservices.login(acPass);
         if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
         {
-            return "mainpage";
+            session.setAttribute("user",acpass1);
+            List<Oprole> user2 =  opservices.getallchac();
+            map.put("user2",user2);
+            return "dlist";
         }
         map.put("loginerror","用户名或密码错误，请重新输入");
         return "login2";
     }
-    @RequestMapping("/dlist")
+    @RequestMapping("/dslist")
     public String dlist() {
         return "dlist";
     }
