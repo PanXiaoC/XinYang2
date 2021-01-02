@@ -15,6 +15,24 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = "acpass")
 public class ac_pass implements Serializable  {
     private static final long SerVersionUID = 1L;
+
+    public String getPass_usern() {
+        return pass_usern;
+    }
+
+    public void setPass_usern(String pass_usern) {
+        this.pass_usern = pass_usern;
+    }
+
+    public String getPass_pass() {
+        return pass_pass;
+    }
+
+    public void setPass_pass(String pass_pass) {
+        this.pass_pass = pass_pass;
+    }
+
     private String pass_usern;
     private String pass_pass;
 }
+ 

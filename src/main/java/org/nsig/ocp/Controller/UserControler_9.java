@@ -3,6 +3,7 @@ package org.nsig.ocp.Controller;
 import org.mybatis.spring.annotation.MapperScan;
 import org.nsig.ocp.Entity.Oprole;
 import org.nsig.ocp.Entity.ac_pass;
+import org.nsig.ocp.Entity.opac_inf;
 import org.nsig.ocp.Servises.Impl.OpservicesImpl_9;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,5 +43,21 @@ public class UserControler_9 {
     @RequestMapping("/dlist")
     public String dlist() {
         return "dlist";
+    }
+
+    @RequestMapping("/insert_oprole")
+    public String insert_oprole(Oprole oprole){
+        opservices.insert_oprole(oprole);
+        return "mainpage";
+    }
+
+    @RequestMapping("/insert_opacinf")
+    public String insert_opacinf(opac_inf opacinf){
+        ac_pass acPass = new ac_pass();
+        acPass.setPass_usern(opacinf.getInf_usern());
+        acPass.setPass_pass("123456");
+        opservices.insert_pass(acPass);
+        opservices.insert_opacinf(opacinf);
+        return "mainpage";
     }
 }
