@@ -60,4 +60,14 @@ public class UserControler_9 {
         opservices.insert_opacinf(opacinf);
         return "mainpage";
     }
+
+    @RequestMapping("/findoprole")
+    public List<Oprole> findoprole(Oprole oprole){
+        return opservices.findoprole(oprole);
+    }
+
+    @RequestMapping("findopacinf")
+    public List<opac_inf> findipacinf(opac_inf opacInf){
+        return opservices.findopacinf(opacInf);
+    }
 }

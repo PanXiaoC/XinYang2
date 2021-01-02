@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="org.nsig.ocp.Dao.checkchac_9" >
+    <select id="findopacinf"  parameterType="org.nsig.ocp.Entity.opac_inf"  resultType="org.nsig.ocp.Entity.opac_inf" >
+        select * from opac_inf
+        <where>
+            <if test="inf_usern != null and inf_usern != ''">
+                and inf_usern like '%${inf_usern}%'
+            </if>
+            <if test="inf_realn != null and inf_realn != ''">
+                and inf_realn = #{inf_realn}
+            </if>
+            <if test="inf_tel != null and inf_tel != ''">
+                and inf_tel = #{inf_tel}
+            </if>
+            <if test="inf_mail != null and inf_mail != ''">
+                and inf_mail = #{inf_mail}
+            </if>
+            <if test="inf_role != null and inf_role != ''">
+                and inf_role = #{inf_role}
+            </if>
+            <if test="inf_sex != null and inf_sex != ''">
+                and inf_sex = #{inf_sex}
+            </if>
+        </where>
+    </select>
+</mapper>
