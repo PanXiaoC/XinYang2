@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="org.nsig.ocp.Dao.OproleDao_9" >
+    <resultMap id="BaseResultMap" type="org.nsig.ocp.Entity.ac_pass" >
+        <result column="pass_usern" property="pass_usern" jdbcType="VARCHAR" />
+        <result column="pass_pass" property="pass_pass" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="login" resultMap="BaseResultMap" parameterType="org.nsig.ocp.Entity.ac_pass" >
+        select * from ac_pass where pass_usern= #{pass_usern}
+    </select>
+</mapper>

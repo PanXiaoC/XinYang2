@@ -16,7 +16,6 @@ import java.util.Map;
 
 @Controller
 @CrossOrigin
-@MapperScan("org.nsig.ocp.*")
 public class UserControler_9 {
     @Autowired
     private OpservicesImpl_9 opservices;
@@ -35,9 +34,14 @@ public class UserControler_9 {
         acpass1 = opservices.login(acPass);
         if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
         {
-            return "success";
+            return "mainpage";
         }
         map.put("loginerror","用户名或密码错误，请重新输入");
+        map.put("user",acpass1.getPass_usern());
         return "login2";
+    }
+    @RequestMapping("/dlist")
+    public String dlist() {
+        return "dlist";
     }
 }
