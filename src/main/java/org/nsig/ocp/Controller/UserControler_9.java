@@ -37,7 +37,6 @@ public class UserControler_9 {
             return "mainpage";
         }
         map.put("loginerror","用户名或密码错误，请重新输入");
-        map.put("user",acpass1.getPass_usern());
         return "login2";
     }
     @RequestMapping("/dlist")
