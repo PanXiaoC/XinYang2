@@ -84,8 +84,11 @@ public class UserControler_9 {
     }
 
     @RequestMapping("/findoprole")//查找oprole的信息
-    public List<Oprole> findoprole(Oprole oprole){
-        return opservices.findoprole(oprole);
+    public Map<String,Object> findoprole(Oprole oprole){
+        List<Oprole> oproles =  opservices.findoprole(oprole);
+        Map<String, Object> map = new HashMap<>();
+        map.put("oprole",oproles);
+        return map;
     }
 
     @RequestMapping("findopacinf")//查找opacinf的信息。
