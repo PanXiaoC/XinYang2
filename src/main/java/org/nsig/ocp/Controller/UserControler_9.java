@@ -93,8 +93,11 @@ public class UserControler_9 {
     }
 
     @RequestMapping("findopacinf")//查找opacinf的信息。
-    public List<opac_inf> findipacinf(opac_inf opacInf){
-        return opservices.findopacinf(opacInf);
+    public Map<String,Object> findipacinf(opac_inf opacInf){
+        List<opac_inf> opacInfs = opservices.findopacinf(opacInf);
+        Map<String, Object> map = new HashMap<>();
+        map.put("opacInf",opacInfs);
+        return map;
     }
 
     @RequestMapping("deleteOProle")//删除oprole的信息
@@ -125,5 +128,24 @@ public class UserControler_9 {
     @RequestMapping("updateOprole")//修改oprole信息
     public void updateOprole(Oprole oprole){
         opservices.updateOprole(oprole);
+    }
+
+    @RequestMapping("deletelistOprole")//连续删除多个Oprole,检查删除数目是否正确，多一个或少删一个
+    public Integer deletelistOprole(List<Oprole> oproles){
+        for (int i = 0 ; i < oproles.size(); i++){
+            opservices.deletoprole(oproles.get(i));
+        }
+        return 0;
+    }
+
+    @RequestMapping("deletelistopacInf")//连续删除多个opacinf，注意删除的个数
+    public Integer deletelistopacInf(List<opac_inf> opacInfs){
+        ac_pass acPass = new ac_pass();
+        for (int i = 0 ; i < opacInfs.size() ; i++){
+            opservices.deletopacinf(opacInfs.get(i));
+            acPass.setPass_usern(opacInfs.get(i).getInf_usern());
+            opservices.deletacpass(acPass);
+        }
+        return 0;
     }
 }
