@@ -73,4 +73,19 @@ public class UserControler_9 {
     public List<opac_inf> findipacinf(opac_inf opacInf){
         return opservices.findopacinf(opacInf);
     }
+
+    @RequestMapping("deleteOProle")
+    public Integer deleteOprole(Oprole oprole){
+        opservices.deletoprole(oprole);
+        return 0;
+    }
+
+    @RequestMapping("deleteacPassOpacInf")
+    public Integer deleteopac_inf(opac_inf opacInf){
+        opservices.deletopacinf(opacInf);
+        ac_pass acPass = new ac_pass();
+        acPass.setPass_usern(opacInf.getInf_usern());
+        opservices.deletacpass(acPass);
+        return 0;
+    }
 }

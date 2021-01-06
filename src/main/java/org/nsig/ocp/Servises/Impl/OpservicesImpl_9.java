@@ -75,4 +75,9 @@ public class OpservicesImpl_9 implements Opservise_9 {
     public Integer deletacpass(ac_pass acPass){
         return checkchac.deletacpass(acPass);
     }
+
+    @Override
+    public void updateAcPass(ac_pass acPass){
+        addoprole9.updateAcPass(acPass);
+    }
 }
