@@ -10,9 +10,9 @@
     </parent>
     <groupId>org.nsig</groupId>
     <artifactId>ocp</artifactId>
-    <version>1.0-test</version>
+    <version>1.0-Test</version>
     <name>ocp</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Ocp project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
