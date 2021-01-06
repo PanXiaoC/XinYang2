@@ -46,11 +46,26 @@ public class Oprole implements Serializable {
         this.role_con = role_con;
     }
 
+    public Integer getPagenum() {
+        return pagenum;
+    }
+
+    public void setPagenum(Integer pagenum) {
+        this.pagenum = pagenum;
+    }
+
+    public Integer getPagesize() {
+        return pagesize;
+    }
+
+    public void setPagesize(Integer pagesize) {
+        this.pagesize = pagesize;
+    }
+
     private Integer role_id;
     private String role_name;
     private String role_des;
     private String role_con;
-
     private Integer pagenum;
     private Integer pagesize;
 }

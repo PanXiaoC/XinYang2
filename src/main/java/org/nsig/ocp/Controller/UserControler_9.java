@@ -314,4 +314,25 @@ public class UserControler_9 {
         map.put("oprole",oproles);
         return map;
     }
+
+    @RequestMapping("/updateuseOprole")//修改oprole中的信息，启用，禁用(1启用， 0禁用)
+    public Map<String,String> updateuseOprole(Oprole oprole){
+        if(oprole.getRole_con() == "启用"){
+            oprole.setRole_con("禁用");
+        }else{
+            oprole.setRole_con("启用");
+        }
+        Integer s1 = opservices.updateOprole(oprole);
+        Map<String,String> map = new HashMap<>();
+        if (s1 == 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "修改成功");
+        }
+        else {
+            map.put("flag", "2");
+            map.put("message", "修改失败");
+        }
+        return map;
+    }
 }

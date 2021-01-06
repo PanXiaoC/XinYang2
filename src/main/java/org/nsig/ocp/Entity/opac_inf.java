@@ -89,6 +89,22 @@ public class opac_inf implements Serializable {
         this.inf_con = inf_con;
     }
 
+    public Integer getPagenum() {
+        return pagenum;
+    }
+
+    public void setPagenum(Integer pagenum) {
+        this.pagenum = pagenum;
+    }
+
+    public Integer getPagesize() {
+        return pagesize;
+    }
+
+    public void setPagesize(Integer pagesize) {
+        this.pagesize = pagesize;
+    }
+
     private String inf_usern;
     private String inf_realn;
     private String inf_org;
@@ -98,7 +114,6 @@ public class opac_inf implements Serializable {
     private String inf_tel;
     private String inf_mail;
     private String inf_con;
-
     private Integer pagenum;
     private  Integer pagesize;
 }
