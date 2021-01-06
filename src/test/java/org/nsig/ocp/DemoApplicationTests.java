@@ -44,8 +44,6 @@ class DemoApplicationTests {
     void testaddoprole(){
         System.out.println( "============>"+ this.addoprole1.addoprole1(oprole));
     }
-    @Test
-    void testdeletoprole(){
-        System.out.println("===========删除成功"+ this.checkchac9.deletoprole(oprole));
-    }
+
+
 }

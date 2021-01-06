@@ -1,9 +1,6 @@
 package org.nsig.ocp.Dao;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.nsig.ocp.Entity.Oprole;
 import org.nsig.ocp.Entity.ac_pass;
 import org.nsig.ocp.Entity.opac_inf;
@@ -27,6 +24,12 @@ public interface addoprole {
     @Update("update opac_inf set inf_realn =#{inf_realn}, inf_org =#{inf_org}, inf_pro =#{inf_pro}, inf_role =#" +
             "{inf_role}, inf_sex =#{inf_sex}, inf_tel =#{inf_tel}, inf_mail =#{inf_mail} where inf_usern = #{inf_usern}")
     Integer updateopacinf(opac_inf opacInf);//更新opacinf信息
-    @Update("update Oprole set role_des = #{role_des}, role_con = #{role_con} where role_name = #{role_name}")
+    @Update("update op_role set role_des = #{role_des} where role_name = #{role_name}")
     Integer updateOprole(Oprole oprole);
+    @Delete("delete from op_role where role_name = #{role_name}")
+    Integer deleteoprole(Oprole oprole);
+    @Delete("delete from opac_inf where inf_usern = #{inf_usern}")
+    Integer deleteopacinf(opac_inf opacInf);
+    @Delete("delete from ac_pass where pass_usern = #{pass_usern}")
+    Integer deleteacpass(ac_pass acPass);
 }

@@ -17,10 +17,10 @@ public interface Opservise_9 {
     List<Oprole> findallOprole();//查询所有的oprole
     List<Oprole> findoprole(Oprole oprole);//增加oprole
     List<opac_inf> findopacinf(opac_inf opacInf);//增加opacinf
-    Integer deletoprole (Oprole oprole);//删除oprole
-    Integer deletopacinf(opac_inf opacInf);//删除opacinf
-    Integer deletacpass(ac_pass acPass);//删除acpass
-    void updateAcPass(ac_pass acPass);//修改acPass
-    void updateOpacInf(opac_inf opacInf);//修改opacinf
-    void updateOprole(Oprole oprole);//修改oprole
+    Integer deleteoprole (Oprole oprole);//删除oprole
+    Integer deleteopacinf(opac_inf opacInf);//删除opacinf
+    Integer deleteacpass(ac_pass acPass);//删除acpass
+    Integer updateAcPass(ac_pass acPass);//修改acPass
+    Integer updateOpacInf(opac_inf opacInf);//修改opacinf
+    Integer updateOprole(Oprole oprole);//修改oprole
 }

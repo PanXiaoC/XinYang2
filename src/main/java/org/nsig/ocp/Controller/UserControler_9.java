@@ -1,6 +1,5 @@
 package org.nsig.ocp.Controller;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.nsig.ocp.Entity.Oprole;
 import org.nsig.ocp.Entity.ac_pass;
 import org.nsig.ocp.Entity.opac_inf;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -91,59 +89,128 @@ public class UserControler_9 {
         return map;
     }
     //测试通过
-    @RequestMapping("findopacinf")//查找opacinf的信息。
+    @RequestMapping("/findopacinf")//查找opacinf的信息。
     public Map<String,Object> findipacinf(opac_inf opacInf){
         List<opac_inf> opac_infs =  opservices.findopacinf(opacInf);
         Map<String, Object> map = new HashMap<>();
         map.put("oprole",opac_infs);
         return map;
     }
-
-    @RequestMapping("deleteOProle")//删除oprole的信息
-    public Integer deleteOprole(Oprole oprole){
-        opservices.deletoprole(oprole);
-        return 0;
+    //测试成功
+    @RequestMapping("/deleteoprole")//删除oprole的信息
+    public  Map<String,String> deleteOprole(Oprole oprole){
+        Map<String,String> map = new HashMap<>();
+        Integer s1 = opservices.deleteoprole(oprole);
+        if (s1 == 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "success");
+        }
+        else
+        {
+            map.put("flag", "2");
+            map.put("message", "default");
+        }
+        return map;
     }
-
-    @RequestMapping("deleteacPassOpacInf")//删除opacinf的信息和acpass的信息
-    public Integer deleteopac_inf(opac_inf opacInf){
-        opservices.deletopacinf(opacInf);
+    //测试成功
+    @RequestMapping("/deleteacPassOpacInf")//删除opacinf的信息和acpass的信息
+    public Map<String,String> deleteopac_inf(opac_inf opacInf){
         ac_pass acPass = new ac_pass();
         acPass.setPass_usern(opacInf.getInf_usern());
-        opservices.deletacpass(acPass);
-        return 0;
-    }
-
-    @RequestMapping("updateAcPass")//改密码
-    public void updateAcPAss(ac_pass acPass){
-        opservices.updateAcPass(acPass);
-    }
-
-    @RequestMapping("updateOpacInf")//修改用户信息
-    public void updateOpacInf(opac_inf opacInf){
-        opservices.updateOpacInf(opacInf);
-    }
-
-    @RequestMapping("updateOprole")//修改oprole信息
-    public void updateOprole(Oprole oprole){
-        opservices.updateOprole(oprole);
-    }
-
-    @RequestMapping("deletelistOprole")//删除list Oprole
-    public Integer deletelistOprole(List<Oprole> oproles){
-        for(int i = 0; i < oproles.size(); i++){
-            opservices.deletoprole(oproles.get(i));
+        Integer s1 = opservices.deleteacpass(acPass);
+        Integer s2 = opservices.deleteopacinf(opacInf);
+        Map<String,String> map = new HashMap<>();
+        if (s1 == 1 && s2== 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "删除成功");
         }
-        return 0;
+        else {
+            map.put("flag", "2");
+            map.put("message", "删除失败");
+        }
+        return map;
+    }
+    //测试成功
+    @RequestMapping("/updateAcPass")//改密码
+    public Map<String,String> updateAcPAss(ac_pass acPass){
+        Integer s1 = opservices.updateAcPass(acPass);
+        Map<String,String> map = new HashMap<>();
+        if (s1 == 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "修改成功");
+        }
+        else {
+            map.put("flag", "2");
+            map.put("message", "修改失败");
+        }
+        return map;
+    }
+    //测试成功
+    @RequestMapping("/updateOpacInf")//修改用户信息
+    public Map<String,String> updateOpacInf(opac_inf opacInf){
+        Integer s1 = opservices.updateOpacInf(opacInf);
+        Map<String,String> map = new HashMap<>();
+        if (s1 == 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "修改成功");
+        }
+        else {
+            map.put("flag", "2");
+            map.put("message", "修改失败");
+        }
+        return map;
+    }
+    //测试成功
+    @RequestMapping("/updateOprole")//修改oprole信息
+    public Map<String,String> updateOprole(Oprole oprole){
+        Integer s1 = opservices.updateOprole(oprole);
+        Map<String,String> map = new HashMap<>();
+        if (s1 == 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "修改成功");
+        }
+        else {
+            map.put("flag", "2");
+            map.put("message", "修改失败");
+        }
+        return map;
     }
 
-    @RequestMapping("deleteListopacInf")//删除list opacinf
+    @RequestMapping("/deletelistOprole")//删除list Oprole
+    public Map<String,String> deletelistOprole(List<Oprole> oproles){
+        Map<String,String> map = new HashMap<>();
+        Integer count = 0;
+        for(int i = 0; i < oproles.size(); i++){
+            Integer s1 = opservices.deleteoprole(oproles.get(i));
+            if (s1 == 1)
+            {
+                count++;
+            }
+        }
+        if (count == oproles.size())
+        {
+            map.put("flag", "1");
+            map.put("message", "修改成功");
+        }
+        else {
+            map.put("flag", "2");
+            map.put("message", "修改失败");
+        }
+        return map;
+    }
+
+    @RequestMapping("/deleteListopacInf")//删除list opacinf
     public Integer deleteListopacInf(List<opac_inf> opacInfs){
         ac_pass acPass = new ac_pass();
         for(int i = 0 ; i < opacInfs.size(); i++){
-            opservices.deletopacinf(opacInfs.get(i));
             acPass.setPass_usern(opacInfs.get(i).getInf_usern());
-            opservices.deletacpass(acPass);
+            opservices.deleteacpass(acPass);
+            opservices.deleteopacinf(opacInfs.get(i));
         }
         return 0;
     }

@@ -11,7 +11,6 @@ import java.util.List;
 public interface checkchac_9 {
     List<Oprole> checkchac(Oprole oprole);
     List<opac_inf> findopacinf(opac_inf opacInf);
-    Integer deletoprole(Oprole oprole);
     Integer deletopacinf(opac_inf opacInf);
     Integer deletacpass(ac_pass acPass);
 }

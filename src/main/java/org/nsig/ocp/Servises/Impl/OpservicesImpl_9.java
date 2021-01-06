@@ -64,32 +64,32 @@ public class OpservicesImpl_9 implements Opservise_9 {
     }
 
     @Override
-    public  Integer deletoprole(Oprole oprole){
-        return  checkchac.deletoprole(oprole);
+    public  Integer deleteoprole(Oprole oprole){
+        return addoprole9.deleteoprole(oprole);
     }
 
     @Override
-    public Integer deletopacinf(opac_inf opacInf){
-        return checkchac.deletopacinf(opacInf);
+    public Integer deleteopacinf(opac_inf opacInf){
+        return addoprole9.deleteopacinf(opacInf);
     }
 
     @Override
-    public Integer deletacpass(ac_pass acPass){
-        return checkchac.deletacpass(acPass);
+    public Integer deleteacpass(ac_pass acPass){
+        return addoprole9.deleteacpass(acPass);
     }
 
     @Override
-    public void updateAcPass(ac_pass acPass){
-        addoprole9.updateAcPass(acPass);
+    public Integer updateAcPass(ac_pass acPass){
+        return addoprole9.updateAcPass(acPass);
     }
 
     @Override
-    public void updateOpacInf(opac_inf opacInf){
-        addoprole9.updateopacinf(opacInf);
+    public Integer updateOpacInf(opac_inf opacInf){
+        return addoprole9.updateopacinf(opacInf);
     }
 
     @Override
-    public void updateOprole(Oprole oprole){
-        addoprole9.updateOprole(oprole);
+    public Integer updateOprole(Oprole oprole){
+        return addoprole9.updateOprole(oprole);
     }
 }
