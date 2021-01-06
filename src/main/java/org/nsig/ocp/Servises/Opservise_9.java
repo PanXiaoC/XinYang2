@@ -7,6 +7,7 @@ import org.nsig.ocp.Entity.opac_inf;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface Opservise_9 {
@@ -25,4 +26,8 @@ public interface Opservise_9 {
     Integer updateOprole(Oprole oprole);//修改oprole
     List<opac_inf> findByAnyOpacInf(opac_inf opacInf);//关于opacinf的模糊查询
     List<Oprole> findByAnyOprole(Oprole oprole);//关于oprole的模糊查询
+    Integer alloprole();
+    Integer allopacinf();
+    List<Oprole> limitoprole(Oprole oprole);
+    List<opac_inf> limitopacinf(opac_inf opacInf);
 }

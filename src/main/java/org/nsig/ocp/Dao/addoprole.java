@@ -6,6 +6,7 @@ import org.nsig.ocp.Entity.ac_pass;
 import org.nsig.ocp.Entity.opac_inf;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface addoprole {
@@ -36,4 +37,8 @@ public interface addoprole {
     Integer alloprole();
     @Select("select count(*) from opac_inf")
     Integer allopacinf();
+    @Select("select * from op_role limit #{pagenum},#{pagesize}")
+    List<Oprole> limitoprole (Oprole oprole);
+    @Select("select * from opac_inf limit #{pagenum},#{pagesize}")
+    List<opac_inf> limitopacinf (opac_inf opacInf);
 }

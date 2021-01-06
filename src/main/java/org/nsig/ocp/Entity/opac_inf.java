@@ -98,4 +98,7 @@ public class opac_inf implements Serializable {
     private String inf_tel;
     private String inf_mail;
     private String inf_con;
+
+    private Integer pagenum;
+    private  Integer pagesize;
 }

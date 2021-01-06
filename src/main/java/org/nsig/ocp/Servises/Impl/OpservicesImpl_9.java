@@ -102,4 +102,22 @@ public class OpservicesImpl_9 implements Opservise_9 {
     public List<Oprole> findByAnyOprole(Oprole oprole){
         return checkchac.checkchac(oprole);
     }
+    @Override
+    public Integer alloprole()
+    {
+        return addoprole9.alloprole();
+    }
+    @Override
+    public Integer allopacinf()
+    {
+        return addoprole9.allopacinf();
+    }
+    @Override
+    public List<Oprole> limitoprole(Oprole oprole){
+        return  addoprole9.limitoprole(oprole);
+    }
+    @Override
+    public List<opac_inf> limitopacinf(opac_inf opacInf){
+        return addoprole9.limitopacinf(opacInf);
+    }
 }

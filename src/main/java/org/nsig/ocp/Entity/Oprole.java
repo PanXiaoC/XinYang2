@@ -50,4 +50,7 @@ public class Oprole implements Serializable {
     private String role_name;
     private String role_des;
     private String role_con;
+
+    private Integer pagenum;
+    private Integer pagesize;
 }

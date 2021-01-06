@@ -214,9 +214,9 @@ public class UserControler_9 {
         }
         return 0;
     }
-
-    @RequestMapping("/page")//分页操作
-    public Map<String,String> page(String nowpagenum)
+   //测试成功
+    @RequestMapping("/limitoprolepage")//角色表分页操作
+    public Map<String,Object> limitoprolepage(String nowpagenum)
     {
         String spPage = nowpagenum;
         //设置每页条数
@@ -233,7 +233,7 @@ public class UserControler_9 {
         }
         //设置最大页数
         int totalCount=0;
-        int count=;
+        int count=opservices.alloprole();
         if(count>0){
             totalCount=count;
         }
@@ -241,23 +241,62 @@ public class UserControler_9 {
         if(pageNo>maxPage){
             pageNo=maxPage;
         }
-        tempPageNo=(pageNo-1)*pageSize;
+        int  tempPageNo=(pageNo-1)*pageSize;
         //计算总数量
         //分页查询
-        Map map=new HashMap();
-        map.put("pageNo",tempPageNo);
-        map.put("pageSize",pageSize);
-        map.put("phone",phone);
-        List<Map> list=selectService.pageList(map);
+        Oprole oprole = new Oprole();
+        oprole.setPagenum(tempPageNo);
+        oprole.setPagesize(pageSize);
+        List<Oprole> list=opservices.limitoprole(oprole);
         //最后把信息放入model转发到页面把信息带过去
-        model.addAttribute("list",list);
-        model.addAttribute("pageNo",pageNo);
-        model.addAttribute("totalCount",totalCount);
-        model.addAttribute("maxPage",maxPage);
-        return "back/shangpin";
+        Map<String,Object> map1 =new HashMap();
+        map1.put("limitoprole", list);
+        map1.put("totalcount", totalCount);
+        map1.put("pagenumber", pageNo);
+        map1.put("maxpage", maxPage);
+        return map1;
     }
-        Map<String,String> map = new HashMap<>();
-        return map;
+    //测试成功
+    @RequestMapping("/limitopacinfpage")//用户信息表分页操作
+    public Map<String,Object> limitopacinfpage(String nowpagenum)
+    {
+        String spPage = nowpagenum;
+        //设置每页条数
+        int pageSize=5;
+        //页数
+        int pageNo=0;
+        if(spPage == null){
+            pageNo=1;
+        }else {
+            pageNo = Integer.valueOf(spPage);
+            if (pageNo < 1) {
+                pageNo = 1;
+            }
+        }
+        //设置最大页数
+        int totalCount=0;
+        int count=opservices.allopacinf();
+        if(count>0){
+            totalCount=count;
+        }
+        int maxPage=totalCount%pageSize==0?totalCount/pageSize:totalCount/pageSize+1;
+        if(pageNo>maxPage){
+            pageNo=maxPage;
+        }
+        int  tempPageNo=(pageNo-1)*pageSize;
+        //计算总数量
+        //分页查询
+        opac_inf opacInf = new opac_inf();
+        opacInf.setPagenum(tempPageNo);
+        opacInf.setPagesize(pageSize);
+        List<opac_inf> list=opservices.limitopacinf(opacInf);
+        //最后把信息放入model转发到页面把信息带过去
+        Map<String,Object> map1 =new HashMap();
+        map1.put("limitopacinf", list);
+        map1.put("totalcount", totalCount);
+        map1.put("pagenumber", pageNo);
+        map1.put("maxpage", maxPage);
+        return map1;
     }
 
     @RequestMapping("/findBuyAnyOpacInf")//查找opacinf的信息。模糊查询
