@@ -234,4 +234,20 @@ public class UserControler_9 {
         }
         return map;
     }
+
+    @RequestMapping("/findBuyAnyOpacInf")//查找opacinf的信息。模糊查询
+    public Map<String,Object> findByAnyOpacInf(opac_inf opacInf){
+        List<opac_inf> opac_infs =  opservices.findByAnyOpacInf(opacInf);
+        Map<String, Object> map = new HashMap<>();
+        map.put("oprole",opac_infs);
+        return map;
+    }
+
+    @RequestMapping("/findByAnyOprole")//查找oprole的信息  模糊查询
+    public Map<String,Object> findByAnyOprole(Oprole oprole){
+        List<Oprole> oproles =  opservices.findByAnyOprole(oprole);
+        Map<String, Object> map = new HashMap<>();
+        map.put("oprole",oproles);
+        return map;
+    }
 }

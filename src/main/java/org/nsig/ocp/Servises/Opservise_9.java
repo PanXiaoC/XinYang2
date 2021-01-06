@@ -23,4 +23,6 @@ public interface Opservise_9 {
     Integer updateAcPass(ac_pass acPass);//修改acPass
     Integer updateOpacInf(opac_inf opacInf);//修改opacinf
     Integer updateOprole(Oprole oprole);//修改oprole
+    List<opac_inf> findByAnyOpacInf(opac_inf opacInf);//关于opacinf的模糊查询
+    List<Oprole> findByAnyOprole(Oprole oprole);//关于oprole的模糊查询
 }
