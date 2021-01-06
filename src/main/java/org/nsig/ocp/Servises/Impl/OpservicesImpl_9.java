@@ -47,6 +47,11 @@ public class OpservicesImpl_9 implements Opservise_9 {
     }
 
     @Override
+    public List<Oprole> findallOprole(){
+        return addoprole9.getallchac();
+    }
+
+    @Override
     public List<Oprole> findoprole(Oprole oprole){
         return checkchac.checkchac(oprole);
     }

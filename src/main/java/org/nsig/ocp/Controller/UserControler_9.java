@@ -36,7 +36,7 @@ public class UserControler_9 {
         if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
         {
             session.setAttribute("user",acpass1);
-            List<Oprole> user2 =  opservices.getallchac();
+            List<Oprole> user2 =  opservices.findallOprole();
             map.put("user2",user2);
             return "dlist";
         }
