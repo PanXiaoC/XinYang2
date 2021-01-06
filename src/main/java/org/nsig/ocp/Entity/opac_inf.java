@@ -81,6 +81,13 @@ public class opac_inf implements Serializable {
     public void setInf_mail(String inf_mail) {
         this.inf_mail = inf_mail;
     }
+    public String getInf_con() {
+        return inf_con;
+    }
+
+    public void setInf_con(String inf_con) {
+        this.inf_con = inf_con;
+    }
 
     private String inf_usern;
     private String inf_realn;
@@ -90,4 +97,5 @@ public class opac_inf implements Serializable {
     private String inf_sex;
     private String inf_tel;
     private String inf_mail;
+    private String inf_con;
 }

@@ -13,8 +13,8 @@
             <if test="inf_tel != null and inf_tel != ''">
                 and inf_tel = #{inf_tel}
             </if>
-            <if test="inf_mail != null and inf_mail != ''">
-                and inf_mail = #{inf_mail}
+            <if test="inf_con != null and inf_con != ''">
+                and inf_con = #{inf_con}
             </if>
             <if test="inf_role != null and inf_role != ''">
                 and inf_role = #{inf_role}
