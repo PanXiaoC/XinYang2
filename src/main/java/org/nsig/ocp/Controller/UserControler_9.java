@@ -6,9 +6,7 @@ import org.nsig.ocp.Entity.opac_inf;
 import org.nsig.ocp.Servises.Impl.OpservicesImpl_9;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -22,25 +20,22 @@ public class UserControler_9 {
     private OpservicesImpl_9 opservices;
     @Autowired
     private Oprole oprole;
-
-    @RequestMapping("/index")//登录，用户后台登录。
-    public String test() {
-        return "login2";
-    }
+    //测试通过
     @RequestMapping("/login")
-    public String login(ac_pass acPass, Map map, HttpSession session)
+    public Map<String,String> login(ac_pass acPass)
     {
         ac_pass acpass1 = new ac_pass();
         acpass1 = opservices.login(acPass);
-        if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
+        Map<String, String> map = new HashMap<>();
+        if (acpass1 != null && acpass1.getPass_pass().equals(acPass.getPass_pass()) )
         {
-            session.setAttribute("user",acpass1);
-            List<Oprole> user2 =  opservices.findallOprole();
-            map.put("user2",user2);
-            return "dlist";
+            map.put("message","登录成功");
         }
-        map.put("loginerror","用户名或密码错误，请重新输入");
-        return "login2";
+        else
+        {
+            map.put("message","用户名或密码错误，请重新输入");
+        }
+        return map;
     }
     //测试通过
     @RequestMapping("/insert_oprole")//增加oprole
@@ -180,9 +175,10 @@ public class UserControler_9 {
         }
         return map;
     }
-
-    @RequestMapping("/deletelistOprole")//删除list Oprole
-    public Map<String,String> deletelistOprole(List<Oprole> oproles){
+    //未测试，需要前端提交
+    @RequestMapping(value = "/deletelistOprole", method = RequestMethod.PUT)//删除list Oprole//用ajax传递list表单
+    @ResponseBody
+    public Map<String,String> deletelistOprole(@RequestParam(value = "taskList[]") List<Oprole> oproles){
         Map<String,String> map = new HashMap<>();
         Integer count = 0;
         for(int i = 0; i < oproles.size(); i++){
@@ -203,9 +199,10 @@ public class UserControler_9 {
         }
         return map;
     }
-
-    @RequestMapping("/deleteListopacInf")//删除list opacinf
-    public Integer deleteListopacInf(List<opac_inf> opacInfs){
+    //未测试，需要前端提交
+    @RequestMapping(value = "/deleteListopacInf", method = RequestMethod.PUT)//删除list opacinf//用ajax传递list表单
+    @ResponseBody
+    public Integer deleteListopacInf( @RequestParam(value = "taskList[]") List<opac_inf> opacInfs){
         ac_pass acPass = new ac_pass();
         for(int i = 0 ; i < opacInfs.size(); i++){
             acPass.setPass_usern(opacInfs.get(i).getInf_usern());
@@ -298,7 +295,7 @@ public class UserControler_9 {
         map1.put("maxpage", maxPage);
         return map1;
     }
-
+    //测试成功
     @RequestMapping("/findBuyAnyOpacInf")//查找opacinf的信息。模糊查询
     public Map<String,Object> findByAnyOpacInf(opac_inf opacInf){
         List<opac_inf> opac_infs =  opservices.findByAnyOpacInf(opacInf);
@@ -306,7 +303,7 @@ public class UserControler_9 {
         map.put("oprole",opac_infs);
         return map;
     }
-
+    //测试成功
     @RequestMapping("/findByAnyOprole")//查找oprole的信息  模糊查询
     public Map<String,Object> findByAnyOprole(Oprole oprole){
         List<Oprole> oproles =  opservices.findByAnyOprole(oprole);
@@ -314,7 +311,7 @@ public class UserControler_9 {
         map.put("oprole",oproles);
         return map;
     }
-
+    //未测试，需要前端提交
     @RequestMapping("/updateuseOprole")//修改oprole中的信息，启用，禁用(1启用， 0禁用)
     public Map<String,String> updateuseOprole(Oprole oprole){
         if(oprole.getRole_con() == "启用"){

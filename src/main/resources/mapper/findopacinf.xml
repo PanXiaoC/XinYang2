@@ -8,7 +8,7 @@
                 and inf_usern like '%${inf_usern}%'
             </if>
             <if test="inf_realn != null and inf_realn != ''">
-                and inf_realn = #{inf_realn}
+                and inf_realn like '%${inf_realn}%'
             </if>
             <if test="inf_tel != null and inf_tel != ''">
                 and inf_tel = #{inf_tel}
@@ -17,7 +17,7 @@
                 and inf_con = #{inf_con}
             </if>
             <if test="inf_role != null and inf_role != ''">
-                and inf_role = #{inf_role}
+                and inf_role  like '%${inf_role}%'
             </if>
             <if test="inf_sex != null and inf_sex != ''">
                 and inf_sex = #{inf_sex}
