@@ -88,6 +88,7 @@ public class UserControler_9 {
         List<Oprole> oproles =  opservices.findoprole(oprole);
         Map<String, Object> map = new HashMap<>();
         map.put("oprole",oproles);
+        System.out.println(map);
         return map;
     }
 
