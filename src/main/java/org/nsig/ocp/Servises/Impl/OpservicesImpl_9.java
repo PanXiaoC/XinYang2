@@ -92,4 +92,14 @@ public class OpservicesImpl_9 implements Opservise_9 {
     public Integer updateOprole(Oprole oprole){
         return addoprole9.updateOprole(oprole);
     }
+
+    @Override
+    public List<opac_inf> findByAnyOpacInf(opac_inf opacInf){
+        return checkchac.findopacinf(opacInf);
+    }
+
+    @Override
+    public List<Oprole> findByAnyOprole(Oprole oprole){
+        return checkchac.checkchac(oprole);
+    }
 }
