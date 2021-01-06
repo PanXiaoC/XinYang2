@@ -32,4 +32,8 @@ public interface addoprole {
     Integer deleteopacinf(opac_inf opacInf);
     @Delete("delete from ac_pass where pass_usern = #{pass_usern}")
     Integer deleteacpass(ac_pass acPass);
+    @Select("select count(*) from op_role")
+    Integer alloprole();
+    @Select("select count(*) from opac_inf")
+    Integer allopacinf();
 }
