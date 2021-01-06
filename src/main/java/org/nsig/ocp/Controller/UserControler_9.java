@@ -128,4 +128,23 @@ public class UserControler_9 {
     public void updateOprole(Oprole oprole){
         opservices.updateOprole(oprole);
     }
+
+    @RequestMapping("deletelistOprole")//删除list Oprole
+    public Integer deletelistOprole(List<Oprole> oproles){
+        for(int i = 0; i < oproles.size(); i++){
+            opservices.deletoprole(oproles.get(i));
+        }
+        return 0;
+    }
+
+    @RequestMapping("deleteListopacInf")//删除list opacinf
+    public Integer deleteListopacInf(List<opac_inf> opacInfs){
+        ac_pass acPass = new ac_pass();
+        for(int i = 0 ; i < opacInfs.size(); i++){
+            opservices.deletopacinf(opacInfs.get(i));
+            acPass.setPass_usern(opacInfs.get(i).getInf_usern());
+            opservices.deletacpass(acPass);
+        }
+        return 0;
+    }
 }
