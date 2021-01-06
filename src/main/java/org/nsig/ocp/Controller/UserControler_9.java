@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@RestController
 @CrossOrigin
 public class UserControler_9 {
     @Autowired
@@ -43,15 +44,22 @@ public class UserControler_9 {
         map.put("loginerror","用户名或密码错误，请重新输入");
         return "login2";
     }
-    @RequestMapping("/dslist")
-    public String dlist() {
-        return "dlist";
-    }
 
     @RequestMapping("/insert_oprole")//增加oprole
-    public String insert_oprole(Oprole oprole){
-        opservices.insert_oprole(oprole);
-        return "mainpage";
+    public Map<String,String> insert_oprole(Oprole oprole){
+        Integer s1 = opservices.insert_oprole(oprole);
+        Map<String,String> map = new HashMap<>();
+        if (s1== 1)
+        {
+            map.put("flag", "1");
+            map.put("message", "success");
+        }
+        else
+        {
+            map.put("flag", "2");
+            map.put("message", "default");
+        }
+        return map;
     }
 
     @RequestMapping("/insert_opacinf")//插入函数，增加opacinf和acpass，切密码为123456
