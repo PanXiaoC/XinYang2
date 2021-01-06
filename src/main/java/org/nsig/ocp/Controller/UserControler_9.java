@@ -24,7 +24,7 @@ public class UserControler_9 {
     @Autowired
     private Oprole oprole;
 
-    @RequestMapping("/index")
+    @RequestMapping("/index")//登录，用户后台登录。
     public String test() {
         return "login2";
     }
@@ -48,13 +48,13 @@ public class UserControler_9 {
         return "dlist";
     }
 
-    @RequestMapping("/insert_oprole")
+    @RequestMapping("/insert_oprole")//增加oprole
     public String insert_oprole(Oprole oprole){
         opservices.insert_oprole(oprole);
         return "mainpage";
     }
 
-    @RequestMapping("/insert_opacinf")
+    @RequestMapping("/insert_opacinf")//插入函数，增加opacinf和acpass，切密码为123456
     public String insert_opacinf(opac_inf opacinf){
         ac_pass acPass = new ac_pass();
         acPass.setPass_usern(opacinf.getInf_usern());
@@ -64,28 +64,33 @@ public class UserControler_9 {
         return "mainpage";
     }
 
-    @RequestMapping("/findoprole")
+    @RequestMapping("/findoprole")//查找oprole的信息
     public List<Oprole> findoprole(Oprole oprole){
         return opservices.findoprole(oprole);
     }
 
-    @RequestMapping("findopacinf")
+    @RequestMapping("findopacinf")//查找opacinf的信息。
     public List<opac_inf> findipacinf(opac_inf opacInf){
         return opservices.findopacinf(opacInf);
     }
 
-    @RequestMapping("deleteOProle")
+    @RequestMapping("deleteOProle")//删除oprole的信息
     public Integer deleteOprole(Oprole oprole){
         opservices.deletoprole(oprole);
         return 0;
     }
 
-    @RequestMapping("deleteacPassOpacInf")
+    @RequestMapping("deleteacPassOpacInf")//删除opacinf的信息和acpass的信息
     public Integer deleteopac_inf(opac_inf opacInf){
         opservices.deletopacinf(opacInf);
         ac_pass acPass = new ac_pass();
         acPass.setPass_usern(opacInf.getInf_usern());
         opservices.deletacpass(acPass);
         return 0;
+    }
+
+    @RequestMapping("updateAcPass")//改密码
+    public void updateAcPAss(ac_pass acPass){
+        opservices.updateAcPass(acPass);
     }
 }
