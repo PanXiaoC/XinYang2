@@ -21,4 +21,6 @@ public interface Opservise_9 {
     Integer deletopacinf(opac_inf opacInf);//删除opacinf
     Integer deletacpass(ac_pass acPass);//删除acpass
     void updateAcPass(ac_pass acPass);//修改acPass
+    void updateOpacInf(opac_inf opacInf);//修改opacinf
+    void updateOprole(Oprole oprole);//修改oprole
 }

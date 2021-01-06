@@ -23,5 +23,10 @@ public interface addoprole {
     @Select("select * from op_role")
     List<Oprole> getallchac();
     @Update("update ac_pass set pass_pass =#{pass_pass} where pass_usern = #{pass_usern}")
-    int updateAcPass(ac_pass acPass);
+    Integer updateAcPass(ac_pass acPass);//测试一下，可能有问题。更新密码
+    @Update("update opac_inf set inf_realn =#{inf_realn}, inf_org =#{inf_org}, inf_pro =#{inf_pro}, inf_role =#" +
+            "{inf_role}, inf_sex =#{inf_sex}, inf_tel =#{inf_tel}, inf_mail =#{inf_mail} where inf_usern = #{inf_usern}")
+    Integer updateopacinf(opac_inf opacInf);//更新opacinf信息
+    @Update("update Oprole set role_des = #{role_des}, role_con = #{role_con} where role_name = #{role_name}")
+    Integer updateOprole(Oprole oprole);
 }

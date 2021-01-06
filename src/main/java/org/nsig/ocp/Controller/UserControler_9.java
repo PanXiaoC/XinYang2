@@ -93,4 +93,14 @@ public class UserControler_9 {
     public void updateAcPAss(ac_pass acPass){
         opservices.updateAcPass(acPass);
     }
+
+    @RequestMapping("updateOpacInf")//修改用户信息
+    public void updateOpacInf(opac_inf opacInf){
+        opservices.updateOpacInf(opacInf);
+    }
+
+    @RequestMapping("updateOprole")//修改oprole信息
+    public void updateOprole(Oprole oprole){
+        opservices.updateOprole(oprole);
+    }
 }

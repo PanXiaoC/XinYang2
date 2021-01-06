@@ -80,4 +80,14 @@ public class OpservicesImpl_9 implements Opservise_9 {
     public void updateAcPass(ac_pass acPass){
         addoprole9.updateAcPass(acPass);
     }
+
+    @Override
+    public void updateOpacInf(opac_inf opacInf){
+        addoprole9.updateopacinf(opacInf);
+    }
+
+    @Override
+    public void updateOprole(Oprole oprole){
+        addoprole9.updateOprole(oprole);
+    }
 }
