@@ -44,7 +44,7 @@ public class UserControler_9 {
         map.put("loginerror","用户名或密码错误，请重新输入");
         return "login2";
     }
-
+    //测试通过
     @RequestMapping("/insert_oprole")//增加oprole
     public Map<String,String> insert_oprole(Oprole oprole){
         Integer s1 = opservices.insert_oprole(oprole);
@@ -61,7 +61,7 @@ public class UserControler_9 {
         }
         return map;
     }
-
+    //测试通过
     @RequestMapping("/insert_opacinf")//插入函数，增加opacinf和acpass，切密码为123456
     public Map<String,String> insert_opacinf(opac_inf opacinf){
         ac_pass acPass = new ac_pass();
@@ -82,19 +82,21 @@ public class UserControler_9 {
         }
         return map;
     }
-
+    //测试通过
     @RequestMapping("/findoprole")//查找oprole的信息
     public Map<String,Object> findoprole(Oprole oprole){
         List<Oprole> oproles =  opservices.findoprole(oprole);
         Map<String, Object> map = new HashMap<>();
         map.put("oprole",oproles);
-        System.out.println(map);
         return map;
     }
-
+    //测试通过
     @RequestMapping("findopacinf")//查找opacinf的信息。
-    public List<opac_inf> findipacinf(opac_inf opacInf){
-        return opservices.findopacinf(opacInf);
+    public Map<String,Object> findipacinf(opac_inf opacInf){
+        List<opac_inf> opac_infs =  opservices.findopacinf(opacInf);
+        Map<String, Object> map = new HashMap<>();
+        map.put("oprole",opac_infs);
+        return map;
     }
 
     @RequestMapping("deleteOProle")//删除oprole的信息
