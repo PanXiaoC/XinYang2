@@ -63,13 +63,24 @@ public class UserControler_9 {
     }
 
     @RequestMapping("/insert_opacinf")//插入函数，增加opacinf和acpass，切密码为123456
-    public String insert_opacinf(opac_inf opacinf){
+    public Map<String,String> insert_opacinf(opac_inf opacinf){
         ac_pass acPass = new ac_pass();
         acPass.setPass_usern(opacinf.getInf_usern());
         acPass.setPass_pass("123456");
-        opservices.insert_pass(acPass);
-        opservices.insert_opacinf(opacinf);
-        return "mainpage";
+        Integer s2 = opservices.insert_opacinf(opacinf);
+        Integer s1=  opservices.insert_pass(acPass);
+        Map<String,String> map = new HashMap<>();
+        if (s1== 1 && s2==1)
+        {
+            map.put("flag", "1");
+            map.put("message", "success");
+        }
+        else
+        {
+            map.put("flag", "2");
+            map.put("message", "default");
+        }
+        return map;
     }
 
     @RequestMapping("/findoprole")//查找oprole的信息
