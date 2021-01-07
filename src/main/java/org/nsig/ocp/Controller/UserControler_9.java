@@ -1,14 +1,13 @@
 package org.nsig.ocp.Controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.nsig.ocp.Entity.Oprole;
 import org.nsig.ocp.Entity.ac_pass;
 import org.nsig.ocp.Entity.opac_inf;
 import org.nsig.ocp.Servises.Impl.OpservicesImpl_9;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -23,14 +22,21 @@ public class UserControler_9 {
     @Autowired
     private Oprole oprole;
 
-    @RequestMapping("/index")//登录，用户后台登录。
+    @RequestMapping(value = "/index", method = RequestMethod.GET)//登录，用户后台登录。
     public String test() {
-        return "login2";
+        return "login";
     }
-    @RequestMapping("/login")
-    public String login(ac_pass acPass, Map map, HttpSession session)
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public @ResponseBody
+    Map<String, Object> login(@ResponseBody Map<String , Object> data) throws JsonProcessingException
     {
+        String username = (String) data.get("username");
+        String password = (String) data.get("password");
         ac_pass acpass1 = new ac_pass();
+        ac_pass acPass = new ac_pass();
+        acPass.setPass_usern(username);
+        acpass1.setPass_usern(username);
+        acpass1.setPass_pass(password);
         acpass1 = opservices.login(acPass);
         if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
         {
