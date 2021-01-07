@@ -21,15 +21,18 @@ public class UserControler_9 {
     private OpservicesImpl_9 opservices;
     @Autowired
     private Oprole oprole;
+    private Map<String, Object> data;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)//登录，用户后台登录。
     public String test() {
         return "login";
     }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public @ResponseBody
-    Map<String, Object> login(@ResponseBody Map<String , Object> data) throws JsonProcessingException
+    public @ResponseBody Map<String, Object> login(@RequestBody Map<String , Object> data) throws JsonProcessingException
     {
+        this.data = data;
+        System.out.println(data);
         String username = (String) data.get("username");
         String password = (String) data.get("password");
         ac_pass acpass1 = new ac_pass();
@@ -37,16 +40,20 @@ public class UserControler_9 {
         acPass.setPass_usern(username);
         acpass1.setPass_usern(username);
         acpass1.setPass_pass(password);
-        acpass1 = opservices.login(acPass);
-        if (acpass1 != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
+        acPass = opservices.login(acpass1);
+        Map<String, Object> map = new HashMap<>();
+        System.out.println(acPass);
+        System.out.println(acpass1);
+        if (acPass != null &&acpass1.getPass_pass().equals(acPass.getPass_pass().substring(0,acPass.getPass_pass().length()-1)) )
         {
-            session.setAttribute("user",acpass1);
             List<Oprole> user2 =  opservices.findallOprole();
+            map.put("mainpage.jsp", 0);
             map.put("user2",user2);
-            return "dlist";
+            return map;
         }
+        map.put("msg", -1);
         map.put("loginerror","用户名或密码错误，请重新输入");
-        return "login2";
+        return map;
     }
     //测试通过
     @RequestMapping("/insert_oprole")//增加oprole
